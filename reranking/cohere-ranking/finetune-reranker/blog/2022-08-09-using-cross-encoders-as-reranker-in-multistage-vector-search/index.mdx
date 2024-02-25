@@ -43,7 +43,6 @@ Bi-Encoder models are not the only possible way of scoring pairs of data on simi
 
 *Figure 3 - Representation of a Cross-Encoder model*
 
-
 If a Cross-Encoder model is trained on a representative training set, it [achieves higher accuracy than Bi-Encoders](https://arxiv.org/abs/1908.10084). However, since you need to use the Cross-Encoder model during a search for every single data item in combination with the query, this method is very inefficient. For a real-life semantic search application – with thousands or millions of objects – this would be impractical, as it would take "forever" to perform the search.
 
 ## Combining Bi-Encoders and Cross-Encoders
@@ -62,17 +61,4 @@ Catching fish with the big net represents how Bi-Encoders work. Bi-Encoders are 
 
 ## Pre-trained Cross-Encoder models
 
-As noted, Cross-Encoders can achieve high *in-domain* accuracy. To get the most accurate results, we train our models on datasets representative of their specialized use case.
-
-Pretrained Sentence Transformers Cross-Encoder models are [available on HuggingFace](https://huggingface.co/Cross-Encoder). There you can find many different models, for example a model trained on MS Marco, which you could use in a search application with general natural language data (the model is trained on Bing search queries). If you have a search task for a dataset that is *out-of-domain*, you should train or fine-tune a model, see [here](https://www.sbert.net/examples/training/cross-encoder/README.html) for examples.
-
-## Conclusion
-
-We can combine the fast Bi-Encoders and accurate Cross-Encoders in a search pipeline to improve the search experience. With a vector database like [Weaviate](/), you can store and retrieve vectors and data efficiently using Bi-Encoder models to encode data and queries. A search pipeline can then continue with a Cross-Encoder model which reranks a list of retrieved search result candidates.
-
-This blog post was inspired by [Nils Reimer's work on Bi-Encoders and Cross-Encoders](https://www.sbert.net/examples/applications/cross-encoder/README.html).
-
-
-import WhatNext from '/_includes/what-next.mdx'
-
-<WhatNext />
+As noted, Cross-Encoders can achieve high *in-domain* accuracy. To get the most accurate results, we train our models
