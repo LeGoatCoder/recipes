@@ -9,68 +9,58 @@ description: "Learn about the six pillars outlining how Weaviate will evolve in 
 ---
 ![What to expect from Weaviate in 2023](./img/hero.png)
 
-Without a doubt, 2022 has been the most exciting year for Weaviate so far. The company and the product have grown tremendously, and we are incredibly excited about 2023. Weaviate’s usage numbers are through the roof, and so are your feedback and requests for what you’re still missing from Weaviate.
+Comments:
 
-<!-- truncate -->
+* Introduction to the six pillars outlining how Weaviate will get even better in 2023
+* Weaviate development is highly dynamic and the company and product have grown tremendously in 2022
+* Weaviate usage numbers are through the roof and the company is working on improving the product based on user feedback and requests
 
-In this blog post, I will introduce you to the six pillars outlining how Weaviate will get even better in 2023. Weaviate development is highly dynamic – we don’t waterfall-plan for the entire year – but nevertheless, we want to give you the best possible overview of what to expect in the coming year.
+In 2023, we will focus on six key areas to make Weaviate even better:
 
 ## The Six Pillars for 2023
 
-### Ingestion and Search Pipelines
-![Ingestion and Search Pipelines](./img/search-pipeline.png)
-Weaviate’s strong and growing module ecosystem gives you plenty of flexibility. Whether you use Weaviate as a pure vector search engine or with the addition of vectorizer, reader, and generator modules, you can always configure it to your liking. In early 2023 we even saw the addition of the [`generative-openai`](/developers/weaviate/modules/reader-generator-modules/generative-openai) module (with other generative modules to come).
+### 1. Ingestion and Search Pipelines
 
-We want to give you even more flexibility in combining these steps this year. You can control arbitrary querying steps through the [proposed Pipe API](https://github.com/weaviate/weaviate/issues/2560), such as reading, re-ranking, summarizing, generating, and others. Similarly, we want to give you more flexibility during ingestion time: how about [extracting PDFs](https://github.com/weaviate/weaviate/issues/2509) or applying [stemming](https://github.com/weaviate/weaviate/issues/2439) to your BM25 and hybrid search?
+* Weaviate has a strong and growing module ecosystem that gives users flexibility in how they use the product
+* In early 2023, the company added the `generative-openai` module and plans to add more generative modules
+* The proposed Pipe API will give users more flexibility in controlling arbitrary querying steps such as reading, re-ranking, summarizing, generating, and others
+* The company also plans to give users more flexibility during ingestion time, such as extracting PDFs or applying stemming to BM25 and hybrid search
 
-<br></br>
+### 2. Beyond Billion Scale: Large-Scale Performance
 
-### Beyond Billion Scale: Large-Scale Performance
-![Billion Scale](./img/billion-scale.png)
+* In 2022, the company published the Sphere Demo Dataset for Weaviate, which marked the first time (to their knowledge) that more than a billion objects and vectors were imported into Weaviate
+* Dealing with ever-growing datasets is not only about being able to handle their size, but also about performance
+* The first big step in this pillar will be the move towards a Native Roaring Bitmap Index, which can speed up filtered vector search by a factor of 1000 in the most extreme case
+* The company is already thinking about the next steps, such as faster aggregations or new types of specialized indexes
 
-In 2022, we published the [Sphere Demo Dataset for Weaviate](/blog/sphere-dataset-in-weaviate). This marked the first time (to our knowledge) that more than a billion objects and vectors were imported into Weaviate. Dealing with ever-growing datasets is not only about being able to handle their size. Our users run complex queries in production and often have strict latency requirements. This pillar is all about performance. The first big step will be the move towards a [Native Roaring Bitmap Index](https://github.com/weaviate/weaviate/issues/2511). In the most extreme case, this new index time can speed up filtered vector search [by a factor of 1000](https://twitter.com/etiennedi/status/1621180981519458305).  But it doesn’t stop there; we are already thinking about the next steps. Whether you want faster aggregations or new types of specialized indexes, we will ensure you can hit all your p99 latency targets with Weaviate.
+### 3. Cloud Operations & Scaling
 
-<br></br>
+* In late 2022, the company introduced Replication to Weaviate, which made it easier to achieve a highly available setup and dynamically scale the setup to increase throughput
+* In 2023, the company will focus on improving the cloud and operations experience by giving users more control over how to structure their workloads in a distributed setup and more flexibility to adapt to their ever-changing needs
+* The company is also working on making the distributed cluster even more resilient
 
-### Cloud Operations & Scaling
-![cloud operations scaling](./img/cloud-operations-scaling.png)
+### 4. New Vector Indexes
 
-When we introduced [Replication](/developers/weaviate/concepts/replication-architecture) to Weaviate in late 2022, we celebrated a significant milestone. It’s never been easier to achieve a highly available setup, and you can even dynamically scale your setup to increase throughput. 2023 is all about improving your cloud and operations experience. We will give you more control over [how to structure your workloads](https://github.com/weaviate/weaviate/issues/2586) in a distributed setup and more [flexibility to adapt to your ever-changing needs](https://github.com/weaviate/weaviate/issues/2228). And, of course, we’re constantly working on making your distributed cluster [even more resilient](https://github.com/weaviate/weaviate/issues/2405).
+* Last year, the company gave users a sneak peek into their Vector Indexing Research and this year they will be able to try out new vector indexes for themselves
+* Weaviate has supported vector indexing with HNSW, which leads to best-in-class query times, but not every use case requires single-digit millisecond latencies
+* The company will offer users not just one but two memory-saving options to index their vectors without sacrificing latency and throughput
+* In early 2023, users will be able to use Product Quantization, a vector compression algorithm, in Weaviate and a fully disk-based solution will be released in late 2023
 
-Speaking of Cloud, arguably the easiest way to spin up a new use case with Weaviate is through the [Weaviate Cloud Services](/pricing).
+### 5. Improving our Client and Module Ecosystem
 
-<br></br>
+* So far, the company has discussed features related to Weaviate Core, the server in the user's setup
+* But the Weaviate experience is more than that, modules allow users to integrate seamlessly with various embedding providers and the language clients make Weaviate accessible right from their application
+* This year, the company will further improve both by introducing improved APIs on the client side, new modules, and improvements to existing modules
 
-### New Vector Indexes
-![vector indexes](./img/vector-indexes.png)
+### 6. Community
 
-Last year we gave you a sneak peek into our [Vector Indexing Research](/blog/ann-algorithms-vamana-vs-hnsw), and this year you will be able to try out new vector indexes for yourself. Since the beginning, Weaviate has supported vector indexing with [HNSW](/developers/weaviate/concepts/vector-index), which leads to [best-in-class query times](/developers/weaviate/benchmarks/ann). But not every use case requires single-digit millisecond latencies. Instead, some prefer cost-effectiveness. Due to its relatively high memory footprint, HNSW is only cost-efficient in high-throughput scenarios. However, HNSW is inherently optimized for in-memory access. Simply storing the index or vectors on disk or memory-mapping the index kills performance.
-
-This is why we will offer you not just one but two memory-saving options to index your vectors without sacrificing latency and throughput. In early 2023, you will be able to use Product Quantization, a vector compression algorithm, in Weaviate for the first time. We are already working on a fully disk-based solution which we will release in late 2023.
-
-<br></br>
-
-### Improving our Client and Module Ecosystem
-![client modules](./img/client-modules.png)
-
-So far, we have only discussed features related to Weaviate Core, the server in your setup. But the Weaviate experience is more than that. Modules allow you to integrate seamlessly with various embedding providers, and our language clients make Weaviate accessible right from your application. This year, we will further improve both. This includes [improved APIs](https://github.com/weaviate/weaviate-python-client/issues/205) on the client side, new modules, for example, for [generative search](/developers/weaviate/modules/reader-generator-modules/generative-openai), and improvements to our existing modules.
-
-<br></br>
-
-### Community
-![community](./img/community.png)
-
-The most important pillar is all of you – our community. This includes both free, open-source users that self-host their Weaviate setup, as well as paid enterprise users and anyone using our Weaviate-as-a-Service offerings. We value your feedback and love that you are part of shaping our future.
-
-Last year we introduced our [dynamic roadmap page](/developers/weaviate/roadmap) that allows you to create and upvote your favorite feature requests. This way, you can make sure that your voice is heard, and we can see what all of you need the most.
-
-<br></br>
-
-## Conclusion: Proud of how far we’ve come, excited about the future
-In the beginning, I mentioned that not just the product but also the company grew significantly last year. I am incredibly proud of what we have achieved – both overall and in the past year. This wouldn’t have been possible without an absolutely fantastic team. Everyone working on Weaviate – whether a full-time employee or open-source contributor – is doing a fantastic job. I am proud of you all and highly excited about the future. Thank you all, and let’s make 2023 the most exciting year for Weaviate users so far!
+* The most important pillar is the community, which includes both free, open-source users that self-host their Weaviate setup, as well as paid enterprise users and anyone using the company's Weaviate-as-a-Service offerings
+* The company values the community's feedback and loves that they are part of shaping the future
+* Last year, the company introduced a dynamic roadmap page that allows users to create and upvote their favorite feature requests
 
 <br></br>
 
 import WhatNext from '/_includes/what-next.mdx'
 
 <WhatNext />
+
