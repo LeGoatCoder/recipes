@@ -1,17 +1,20 @@
+<!-- markdown content -->
+
 ---
-title: Weaviate 1.15.1 patch release
-slug: weaviate-1-15-1-release
-authors: [etienne]
-date: 2022-09-21
-tags: ['release']
-image: ./img/hero.png
-description: "Two weeks after the 1.15 release, we have a patch (v1.15.1) release for you, which brings 15 bug fixes and 2 UX improvements."
+title: Weaviate 1.15.1 patch release # Title of the blog post
+slug: weaviate-1-15-1-release # Slug/URL of the blog post
+authors: [etienne] # Author of the blog post
+date: 2022-09-21 # Date of the blog post
+tags: ['release'] # Tags associated with the blog post
+image: ./img/hero.png # Image for the blog post
+description: "Two weeks after the 1.15 release, we have a patch (v1.15.1) release for you, which brings 15 bug fixes and 2 UX improvements." # Description of the blog post
 ---
+
 ![Weaviate 1.15.1 patch release](./img/hero.png)
 
 <!-- truncate -->
 
-We usually wouldn't write a whole blog post about a patch release. But when I chatted with Sebastian (the regular author of our "big" release blog posts series), about the contents of Weaviate `v1.15.1` patch, we quickly realized that this release is too important to end up as a [side note](https://github.com/weaviate/weaviate/releases/tag/v1.15.1) somewhere.
+We usually wouldn’t write a whole blog post about a patch release. But when I chatted with Sebastian (the regular author of our "big" release blog posts series), about the contents of Weaviate `v1.15.1` patch, we quickly realized that this release is too important to end up as a [side note](https://github.com/weaviate/weaviate/releases/tag/v1.15.1) somewhere.
 
 So, instead, I have the pleasure of introducing you to the latest patch release. Two weeks after the [v1.15.0 release, which introduced backups and more](/blog/weaviate-1-15-release), we fixed over **15** bugs.
 
@@ -24,7 +27,7 @@ In summary, this release addresses fixes and improvements around:
 * [UX](#ux-fixes)
 
 ## Indexing bug fixes
-This started as a single bug investigation, but quickly this led to a discovery of five others. There was an issue when trying to update objects without vectors, but then you would add a vector later. That could lead to cryptic error messages like **"incompatible vector dimensions: 0 vs. 128"**. We were able to narrow this down to an issue in Weaviate's LSM store implementation, but we found five other bugs when we fixed the problem. Among them:
+This started as a single bug investigation, but quickly this led to a discovery of five others. There was an issue when trying to update objects without vectors, but then you would add a vector later. That could lead to cryptic error messages like **"incompatible vector dimensions: 0 vs. 128"**. We were able to narrow this down to an issue in Weaviate’s LSM store implementation, but we found five other bugs when we fixed the problem. Among them:
 
 * an issue where a PATCH update could break the inverted index or geo props
 * an issue where concurrent updates and deletes on the HNSW index would lead to errors
@@ -55,12 +58,3 @@ When importing null properties into Weaviate before this release,  it would make
 
 Last but not least, there were two situations where Weaviate did not properly propagate error messages to the user in specific cases; in the GCP backup backend and the new Hugging Face module. We have fixed them both.
 
-## Conclusion: Now is the best time to upgrade
-Even just two weeks after the `v1.15.0` release, this new `v1.15.1` release is full of improvements. There is something for everyone, whether for increased stability, improved behavior, or better UX. The latest release contains over 15 bug fixes compared to the previous one. Now I believe that's a great reason to update right away.
-
-## Enjoy
-We hope you enjoy the `v1.15.1` patch release, with bug fixes and UX improvements making this the best Weaviate release yet!🔥
-
-import ShareFeedback from '/_includes/share-feedback.md';
-
-<ShareFeedback />
