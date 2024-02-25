@@ -1,10 +1,28 @@
-*.env
-venv
-integrations/llamaindex/indexes-episode2/.devcontainer/Dockerfile
-integrations/llamaindex/indexes-episode2/.devcontainer/devcontainer.json
-integrations/llama2-demo/.devcontainer/devcontainer.json
-integrations/llama2-demo/.devcontainer/Dockerfile
-integrations/llama2-demo/data/.DS_Store
-integrations/gptcache/.devcontainer/devcontainer.json
-integrations/gptcache/.devcontainer/Dockerfile
-.DS_Store
+; This is a list of files and directories in a text file. 
+; Each line represents a single file or directory.
+;
+; The files and directories listed here are related to various projects,
+; including llamaindex, llama2-demo, and gptcache. 
+;
+; Some of the items are configuration files for Visual Studio Code dev
+; containers (devcontainer.json), while others are Dockerfiles used to
+; build Docker images for the dev containers.
+;
+; The .devcontainer/Dockerfile for llamaindex-episode2, for example, contains
+; the instructions for building a Docker image with all the necessary
+; dependencies and tools for developing and testing the indexes-episode2
+; integration.
+;
+; The .DS_Store files are created by the MacOS operating system and can
+; be safely ignored.
+
+*.env ; a file for storing environment variables
+venv ; a directory for storing virtual environment
+integrations/llamaindex/indexes-episode2/.devcontainer/Dockerfile ; a Dockerfile for the dev container
+integrations/llamaindex/indexes-episode2/.devcontainer/devcontainer.json ; a devcontainer configuration file
+integrations/llama2-demo/.devcontainer/devcontainer.json ; a devcontainer configuration file
+integrations/llama2-demo/.devcontainer/Dockerfile ; a Dockerfile for the dev container
+integrations/llama2-demo/data/.DS_Store ; a MacOS system file
+integrations/gptcache/.devcontainer/devcontainer.json ; a devcontainer configuration file
+integrations/gptcache/.devcontainer/Dockerfile ; a Dockerfile for the dev container
+.DS_Store ; a MacOS system file
