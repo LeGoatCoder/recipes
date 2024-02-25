@@ -1,12 +1,13 @@
 ---
-title: Why is Vector Search so fast?
+title: Why is Vector Search so fast?  # Title of the blog post
 slug: why-is-vector-search-so-fast
-authors: [laura]
-date: 2022-09-13
-tags: ['search']
-image: ./img/hero.png
-description: "Vector Databases can run semantic queries on multi-million datasets in milliseconds. How is that possible?"
+authors: [laura]  # Author of the blog post
+date: 2022-09-13  # Date the blog post was published
+tags: ['search']  # Tags associated with the blog post
+image: ./img/hero.png  # Image to be displayed at the top of the blog post
+description: "Vector Databases can run semantic queries on multi-million datasets in milliseconds. How is that possible?"  # Description of the blog post
 ---
+
 ![Why is Vector Search so fast?](./img/hero.png)
 
 <!-- truncate -->
@@ -74,61 +75,4 @@ The *brute* force of a **kNN search is computationally very expensive** - and de
 
 In summary, kNN search doesn't scale well, and it is hard to image using it with a large dataset in production.
 
-## The answer - Approximate nearest neighbors (ANN)
-Instead of comparing vectors one by one, vector databases use [Approximate Nearest Neighbor (ANN) algorithms](https://en.wikipedia.org/wiki/Nearest_neighbor_search#Approximation_methods), which trade off a bit of accuracy (hence the A in the name) for a huge gain in speed.
-
-ANN algorithms may not return the true k nearest vectors, but they are very efficient. ANN algorithms maintain good performance (sublinear time, e.g. (poly)logarithmic complexity, see Figure 2) on very large-scale datasets.
-
-*Note that most vector databases allow you to configure how your ANN algorithm should behave. This lets you find the right balance between the **recall tradeoff** (the fraction of results that are the true top-k nearest neighbors), **latency**, **throughput** (queries per second) and **import time**.*<br/>
-*For a great example, check [Weaviate benchmarks](/developers/weaviate/benchmarks/ann#sift1m-1m-128d-vectors-l2-distance), to see how three parameters – [efConstruction, maxConnections and ef](/developers/weaviate/benchmarks/ann#what-is-being-measured) - affect recall, latency, throughput and import times.*
-
-### Examples of ANN algorithms
-Examples of ANN methods are:
-* **trees** – e.g. [ANNOY](https://github.com/spotify/annoy) (Figure 3),
-* **proximity** **graphs** - e.g. [HNSW](https://arxiv.org/abs/1603.09320) (Figure 4),
-* **clustering** - e.g. [FAISS](https://github.com/facebookresearch/faiss),
-* **hashing** - e.g. [LSH](https://en.wikipedia.org/wiki/Locality-sensitive_hashing),
-* **vector compression** - e.g. [PQ](https://ieeexplore.ieee.org/document/5432202) or [SCANN](https://ai.googleblog.com/2020/07/announcing-scann-efficient-vector.html).
-
-![ANNOY](./img/ann-annoy.png)<br/>
-*[Figure 3 - Tree-based ANN search]*
-
-Which algorithm works best depends on your project. Performance can be measured in terms of latency, throughput (queries per second), build time, and accuracy (recall). These four components often have a tradeoff, so it depends on the use case which method works best.
-
-So, while ANN is not some magic method that will always find the true k nearest neighbors in a dataset, it can find a pretty good approximation of the true k neighbors. And it can do this in a fraction of the time!
-
-## HNSW in Weaviate
-[Weaviate](/developers/weaviate/) is a great example of a vector database that uses ANN algorithms to offer ultra-fast queries. The first ANN algorithm introduced to Weaviate is a custom implementation of [Hierarchical Navigable Small World graphs (HNSW)](/developers/weaviate/concepts/vector-index#hnsw).
-
-<img
-  src={require('./img/ann-hnsw.png').default}
-  alt="HNSW"
-  style={{ maxWidth: "50%" }}
-/>
-
-*[Figure 4 - Proximity graph-based ANN search]*
-
-Check out [Weaviate ANN benchmarks](/developers/weaviate/benchmarks/ann) to see how HNSW performed on realistic large-scale datasets. You can use it to compare the tradeoffs between recall, QPS, latency, and import time.<br/>
-You will find it interesting to see, that Weaviate can maintain very high recall rates (>95%), whilst keeping high throughput and low latency (both in milliseconds). That is exactly what you need for fast, but reliable vector search!
-
-## Summary
-A quick recap:
-* Vector databases use Machine Learning models to calculate and attach Vector embeddings to all data objects
-* Vector embeddings capture the meaning and context of data
-* Vector databases offer super fast queries thanks to ANN algorithms
-* ANN algorithms trade a small amount of accuracy for huge gains in performance
-
-*Of course, there is a lot more going on in a vector database that makes it so efficient. But that is content for another article.😉*
-
-## Learn more
-The Weaviate Core team is currently working on research and implementation for other ANN algorithms. We are going to publish some of our findings in the next couple of weeks. So, stay tuned for more content on the topic.
-
-Until then, you can:
-* Listen to a [podcast about ANN Benchmarks](https://youtu.be/kG3ji89AFyQ) with Connor and Etienne from Weaviate.
-* Check out the [Getting Started with Weaviate](/developers/weaviate/quickstart) guide and begin building amazing apps with Weaviate.
-* Join our community on [Slack](https://weaviate.io/slack) or [the forum](https://forum.weaviate.io/), where we can all talk about vector databases.
-* Reach out to us on [Twitter](https://twitter.com/weaviate_io).
-
-import Ending from '/_includes/blog-end-oss-comment.md'
-
-<Ending />
+## The answer -
