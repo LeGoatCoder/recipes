@@ -9,10 +9,10 @@ In this short overview, we will:
 * look at what "Docker" and "Docker Compose" is,
 * why Weaviate relies on Docker,
 * what you need to do to get started,
-* … and answer a few more container-related questions that we encounter regularly.
+* ... and answer a few more container-related questions that we encounter regularly.
 
 ## What is Docker?
-> Docker is a […] [set of products] that use OS-level virtualization to deliver software in packages called containers.<br/>
+> Docker is a [...] [set of products] that use OS-level virtualization to deliver software in packages called containers.<br/>
 > [Wikipedia](https://en.wikipedia.org/wiki/Docker_(software))
 
 You can think of docker containers as lightweight virtual machines. Each container has its own file system, own OS libraries and software. This provides a lot of isolation. At the same time, containers share the host system's kernel, so the overhead is much smaller than with regular virtual machines.
@@ -52,59 +52,21 @@ If you don't want to use the customizer you can also copy/paste one of [the exam
 Make sure that:
 
 * You are in the same folder you downloaded the file to
-* The file you downloaded is named exactly docker-compose.yml
+* The file you downloaded is named exactly `docker-compose.yml`
 
 You can now start up with the whole setup by running:
 
-```bash
-docker-compose up -d
-```
+
+
 
 The `-d` means "detach" and means that your terminal will not attach to the log outputs of all the containers. To attach to the logs of a specific containers you can run:
 
-```bash
-docker-compose logs -f <container-name>
-```
+
+
 
 for example:
 
-```bash
-docker-compose logs -f weaviate
-```
 
-You can also omit the -d option and keep your terminal attached to all logs.
 
-To see the names and status of each container you can run docker-compose ps.
 
-## How do I know when Weaviate is up and ready?
-Weaviate implements a readiness check at `GET /v1/.well-known/ready`. It will return a `2xx` HTTP status code once everything is ready.
-
-To check for the readiness programmatically you can use `curl` in this simple `bash` loop:
-
-```bash
-until curl --fail -s localhost:8080/v1/.well-known/ready; do
-  sleep 1
-done
-```
-
-Make sure to adjust localhost:8080 if you are running on a different bind address.
-
-## Can I run Weaviate without Docker / Containerization?
-We do not officially support running Weaviate in a non-containerized fashion, but it is certainly possible. To do so, you have to compile Weaviate for your desired target OS and architecture. Weaviate is written in Golang, so you need to have a working Go runtime. See the [official documentation for more details](https://golang.org/doc/install/source#environment).
-
-## Can Weaviate run on Kubernetes? Is Helm supported?
-Yes, see next step.
-
-## When should or shouldn't I use Docker-Compose?
-Docker Compose is quick, easy and convenient, but there are situations which it isn't suited for. We recommend to use a docker-compose based setup for trying out or evaluating Weaviate and when developing with Weaviate locally.
-
-However, for a stable production environment, we [recommend to run Weaviate on Kubernetes](/developers/weaviate/installation/kubernetes). You can use Helm, there is an [officially supported Weaviate Helm Chart](https://github.com/weaviate/weaviate-helm).
-
-## Where to go from here?
-Congratulations, you now have a lot of background on Docker and containerization in general! Now there's nothing in the way of [Getting Started with Weaviate](/developers/weaviate/quickstart) and begin building amazing apps with Weaviate.
-
-You can reach out to us on [Slack](https://weaviate.io/slack) or [Twitter](https://twitter.com/weaviate_io), or [join the community forum](https://forum.weaviate.io).
-
-import Ending from '/_includes/blog-end-oss-comment.md'
-
-<Ending />
+You can also omit the -d
