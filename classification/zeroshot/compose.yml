@@ -1,10 +1,13 @@
-version: '3.4'
+# This is a Docker Compose file, version 3.4
 
+# Define a volume to store Weaviate data
 volumes:
   weaviate_data:
 
+# Define the Weaviate service
 services:
   weaviate:
+    # Override the default command
     command:
     - --host
     - 0.0.0.0
@@ -12,11 +15,15 @@ services:
     - '8080'
     - --scheme
     - http
+    # Use the latest Weaviate image from Semi Technologies
     image: semitechnologies/weaviate:latest
+    # Restart the container if it fails up to 0 times
     restart: on-failure:0
+    # Map the container ports to the host ports
     ports:
      - "8080:8080"
      - "50051:50051"
+    # Set environment variables for Weaviate
     environment:
       QUERY_DEFAULTS_LIMIT: 25
       QUERY_MAXIMUM_RESULTS: 10000
@@ -27,9 +34,12 @@ services:
       CLUSTER_HOSTNAME: 'node1'
       AUTOSCHEMA_ENABLED: 'true'
       TRANSFORMERS_INFERENCE_API: http://t2v-transformers:8080
+    # Mount the Weaviate data volume to the container
     volumes:
     - weaviate_data:/var/lib/weaviate      
+
+  # Define the transformers-inference service
   t2v-transformers:
+    # Use the transformers-inference image from Semi Technologies
     image: semitechnologies/transformers-inference:sentence-transformers-paraphrase-multilingual-MiniLM-L12-v2
-    environment:
-      ENABLE_CUDA: '0'
+    # Set the ENABLE\_CUDA environment variable to 
