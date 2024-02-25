@@ -1,22 +1,22 @@
+---                                   # This is a frontmatter section in a markdown file
+title: Weaviate 1.20 Release            # The title of the blog post
+slug: weaviate-1-20-release           # The URL slug for the blog post
+authors: [dan, erika, jp, zain]       # The authors of the blog post
+date: 2023-07-11                       # The date the blog post was published
+image: ./img/hero.png                  # The image that will be used as the featured image for the blog post
+tags: ['release', 'engineering']      # The tags associated with the blog post
+description: "Weaviate 1.20 released with multi-tenancy, PQ, search re-ranking, autocut, hybrid fusion algorithm ... take a look!"  # A brief description of the blog post
 ---
-title: Weaviate 1.20 Release
-slug: weaviate-1-20-release
-authors: [dan,erika,jp,zain]
-date: 2023-07-11
-image: ./img/hero.png
-tags: ['release', 'engineering']
-description: "Weaviate 1.20 released with multi-tenancy, PQ, search re-ranking, autocut, hybrid fusion algorithm ... take a look!"
 
----
+import Core120 from './_core-1-20-include.mdx' ;  # Importing the Core120 module from './_core-1-20-include.mdx' file
 
-import Core120 from './_core-1-20-include.mdx' ;
+<Core120 />                                       # Rendering the Core120 component
 
-<Core120 />
+import WhatsNext from '/_includes/what-next.mdx'  # Importing the WhatsNext module from '/_includes/what-next.mdx' file
 
-import WhatsNext from '/_includes/what-next.mdx'
+<WhatsNext />                                     # Rendering the WhatsNext component
 
-<WhatsNext />
+import Ending from '/_includes/blog-end-oss-comment.md' ; # Importing the Ending module from '/_includes/blog-end-oss-comment.md' file
 
-import Ending from '/_includes/blog-end-oss-comment.md' ;
+<Ending />                                         # Rendering the Ending component
 
-<Ending />
